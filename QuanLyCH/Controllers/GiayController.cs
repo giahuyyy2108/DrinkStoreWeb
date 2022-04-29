@@ -25,11 +25,12 @@ namespace QuanLyCH.Controllers
                 }
                 else
                 {
-                    if (kh.id == 1)
-                    {
+                if (kh.id == 1)
+                {
                     var all_giay = from ss in data.Giays select ss;
                     return View(all_giay);
                 }
+                
                     else
                         return RedirectToAction("XacNhanAdmin", "GioHang");
                 }

@@ -127,6 +127,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="common\MailHelper.cs" />
+    <Compile Include="common\MyAuthorizeAttribute.cs" />
+    <Compile Include="common\UserLogin.cs" />
     <Compile Include="Controllers\GiayController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2206,6 +2209,8 @@
     <Content Include="Content\images\sv3.jpg" />
     <Content Include="Content\images\The Shop.png" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\template\neworder.html" />
+    <Content Include="Content\template\OTP.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2321,6 +2326,7 @@
     <Content Include="Views\Giay\Deletes.cshtml" />
     <Content Include="Views\NguoiDung\profile.cshtml" />
     <Content Include="Views\NguoiDung\sendPass.cshtml" />
+    <Content Include="Views\NguoiDung\forgotpass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

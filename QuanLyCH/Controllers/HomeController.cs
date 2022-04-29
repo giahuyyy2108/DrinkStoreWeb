@@ -20,6 +20,7 @@ namespace QuanLyCH.Controllers
             if (!string.IsNullOrEmpty(searchString)) all_giay = (IOrderedQueryable<Giay>)all_giay.Where(a => a.tengiay.Contains(searchString));
             int pageSize = 6;
             int pageNum = page ?? 1;
+            
             return View(all_giay.ToPagedList(pageNum, pageSize));
         }
         private int TongSoLuongSanPham()

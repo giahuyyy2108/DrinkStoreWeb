@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLyCH.Models;
+using WebBanNuoc.common;
+
 namespace QuanLyCH.Controllers
 {
     public class GioHangController : Controller
@@ -162,6 +165,7 @@ namespace QuanLyCH.Controllers
             dh.thanhtoan = false;
             data.DonHangs.InsertOnSubmit(dh);
             data.SubmitChanges();
+            double tong = 0;
             foreach (var item in gh)
             {
                 ChiTietDonHang ctdh = new ChiTietDonHang();
@@ -173,12 +177,29 @@ namespace QuanLyCH.Controllers
                 s.soluongton -= ctdh.soluong;
                 data.SubmitChanges();
                 data.ChiTietDonHangs.InsertOnSubmit(ctdh);
+                tong += item.dThanhtien;
             }
             data.SubmitChanges();
             Session["Giohang"] = null;
-            return RedirectToAction("XacnhanDonhang", "GioHang");
+            /*string content = System.IO.File.ReadAllText(Server.MapPath("~/content/template/neworder.html"));
+
+            content = content.Replace("{{CustomerName}}", dh.KhachHang.hoten);
+            content = content.Replace("{{Phone}}", dh.KhachHang.dienthoai);
+            content = content.Replace("{{Email}}", dh.KhachHang.email);
+            content = content.Replace("{{Address}}", dh.KhachHang.diachi);
+            content = content.Replace("{{Total}}", tong.ToString("N0"));
+            var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+
+
+            new MailHelper().SendMail(dh.KhachHang.email, "Đơn hàng mới từ đại lý HHTTs", content);
+            new MailHelper().SendMail(toEmail, "Đơn hàng", content);
+            data.SubmitChanges();*/
+            /*Session["GioHang"] = null;*/
+            return RedirectToAction("XacnhanDonHang", "Giohang");
+
+
         }
-        
+
         /*public ActionResult NguoiDung()
         {
             KhachHang kh = (KhachHang)Session["Taikhoan"];

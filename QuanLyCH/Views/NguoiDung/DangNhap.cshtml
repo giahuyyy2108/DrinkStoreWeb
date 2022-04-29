@@ -96,12 +96,14 @@
                         <div class="form-group">
                             @Html.EditorFor(model => model.tendangnhap, new { htmlAttributes = new { @class = "form-control", placeholder = "Ten Dang Nhap" } })
                             @Html.ValidationMessageFor(model => model.tendangnhap, "", new { @class = "text-danger" })
+                            
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="form-group">
                             @Html.EditorFor(model => model.matkhau, new { htmlAttributes = new { @class = "form-control", Type = "password", placeholder = "Password" } })
                             @Html.ValidationMessageFor(model => model.matkhau, "", new { @class = "text-danger" })
+                            
                         </div>
                     </div>
                 </div>
@@ -110,11 +112,16 @@
                     <div class="form-group">
                         <div class="form-group">
                             <div class="col-xs-8 col-sm-9 col-md-9">
-                                <input type="submit" value="DangNhap" class="btn btn-info" style="width:100%;" />
+                                <input type="submit" value="DangNhap" class="btn btn-success"  style="width:100%;" />
+
                             </div>
+                            
                         </div>
+                        <p style="color:red;"> @ViewBag.ThongBao</p>
                         <div>
-                            @Html.ActionLink("Back to List", "Index")
+                            <a class="btn btn-info" href="@Url.Action("forgotpass", "NguoiDung")"> Quen Mat Khau</a>
+
+
                         </div>
                     </div>
 
@@ -124,3 +131,6 @@
     </div>
 }
 
+<script>
+
+</script>

@@ -72,8 +72,8 @@ namespace QuanLyCH.Controllers
                     kh.diachi = diachi;
                     kh.dienthoai = dienthoai;
                     kh.ngaysinh = DateTime.Parse(ngaysinh);
-/*                    kh.id = Convert.ToInt32(collection["id"]);
-*/                    data.KhachHangs.InsertOnSubmit(kh);
+                    kh.id = Convert.ToInt32(collection["id"]);
+                    data.KhachHangs.InsertOnSubmit(kh);
                     data.SubmitChanges();
                     return RedirectToAction("DangNhap");
                 }
@@ -95,17 +95,25 @@ namespace QuanLyCH.Controllers
             {
                 ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
                 Session["TaiKhoan"] = kh;
+
+                return RedirectToAction("Index", "Home");
+
             }
             else
             {
                 ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                
             }
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
         public ActionResult Nhom()
         {
             return PartialView();
+        }
+        public ActionResult forgotpass()
+        {
+            return View();
         }
         public ActionResult DangXuat()
         {
@@ -197,7 +205,7 @@ namespace QuanLyCH.Controllers
 
 
 
-        public void sendPass(string pass , System.Web.Mvc.FormCollection collection)
+/*        public void sendPass(string pass , System.Web.Mvc.FormCollection collection)
 
         {
             DonHang dh = new DonHang();
@@ -274,7 +282,7 @@ namespace QuanLyCH.Controllers
             
 
             
-        }
+        }*/
         public ActionResult XacnhanDonhang()
         {
             return RedirectToAction("XacnhanDonhang", "GioHang");
